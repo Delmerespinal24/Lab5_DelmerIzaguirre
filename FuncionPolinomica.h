@@ -20,7 +20,7 @@ public:
   //Funcion de coeficientes
   void addCoeficientes();
   int getCoeficiente(int);
-  void setCoeficiente(int, int);
+  void addCoeficiente(int);
   //Sobre carga de operadores
   FuncionPolinomica* operator+(FuncionPolinomica*);
   FuncionPolinomica* operator-(FuncionPolinomica*);
