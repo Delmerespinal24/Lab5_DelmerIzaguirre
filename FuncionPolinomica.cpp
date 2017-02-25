@@ -40,6 +40,16 @@ void FuncionPolinomica::addCoeficiente(int c)
   coeficientes.push_back(c);
 }
 
+void FuncionPolinomica::setCoeficiente(int i, int c){
+  coeficientes[i] = c;
+}
+
+void FuncionPolinomica::IniciadorCoeficiente(){
+  for (int i = 0; i<=n; i++){
+    coeficientes.push_back(0);
+  }
+}
+
 FuncionPolinomica* FuncionPolinomica::operator+(FuncionPolinomica* funcion)
   {
   int potencia;
@@ -123,6 +133,8 @@ FuncionPolinomica* FuncionPolinomica::operator-(FuncionPolinomica* funcion)
 FuncionPolinomica* FuncionPolinomica::operator*(FuncionPolinomica* funcion)
 {
   vector <int> potencias;
+  vector <int> nuevasPotencias;
+  vector <int> nuevosCoeficientes;
   int potencia = n+funcion->getN();
   int sumaPotencias = 0;
   FuncionPolinomica* f = new FuncionPolinomica(potencia);
@@ -131,11 +143,31 @@ FuncionPolinomica* FuncionPolinomica::operator*(FuncionPolinomica* funcion)
     for (int j = 0; j <= funcion->getN(); j++){
       nuevoCoeficiente = this->getCoeficiente(i)*funcion->getCoeficiente(j);
       sumaPotencias = i+j;
-      f.addCoeficiente(nuevoCoeficiente);
+      nuevosCoeficientes.push_back(nuevoCoeficiente);
       potencias.push_back(sumaPotencias);
     }
   }
-  
+  f->IniciadorCoeficiente();
+  bool verificador;
+  int coeficienteJ=0;
+  for (int i = 0; i<potencias.size(); i++){
+    for (int j = 0; j<potencias.size();j++){
+      if (potencias[i]==potencias[j]){
+        verificador = true;
+        coeficienteJ = nuevosCoeficientes[j];
+        break;
+      }else {
+        verificador = false;
+      }
+    }
+    if (verificador==true){
+      nuevoCoeficiente = nuevosCoeficientes[i]+ coeficienteJ;
+      f->setCoeficiente(i,nuevoCoeficiente);
+    }else {
+      f->setCoeficiente(i,nuevosCoeficientes[i]);
+    }
+  }
+  return f;
 }
 
 FuncionPolinomica* FuncionPolinomica::operator/(FuncionPolinomica* funcion)

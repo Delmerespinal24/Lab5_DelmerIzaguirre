@@ -107,6 +107,27 @@ int main()
         break;
       }
       case 4:{//Multiplicar funciones
+        int multiplicar1 = 0, multiplicar2 =0;
+        cout<<"FUncioes Polinomicas" << endl;
+        for (int i = 0; i<funciones.size();i++){
+          cout<< i << " " << funciones[i] ;
+        }
+        cout<< endl << "Ingrese un numero para la primera funcion: ";
+        cin>> multiplicar1;
+        while (multiplicar1<0 || multiplicar1>funciones.size()-1) {
+          cout<<"Error en el numero " << endl;
+          cout<<"Ingrese un numero para la primera funcion: ";
+          cin>> multiplicar1;
+        }
+        cout<<"Ingrese otro numero para la segunda funcion: ";
+        cin>>multiplicar2;
+        while (multiplicar2<0 || multiplicar2>funciones.size()-1){
+          cout<<"Ingrese otro numero para la segunda funcion: ";
+          cin>>multiplicar2;
+        }
+        FuncionPolinomica* f = *funciones[multiplicar1]*funciones[multiplicar2];
+        cout << f << endl;
+        operaciones.push_back(f);
         break;
       }
       case 5:{//Dividir funciones

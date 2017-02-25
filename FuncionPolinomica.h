@@ -23,6 +23,9 @@ public:
   void addCoeficientes();
   int getCoeficiente(int);
   void addCoeficiente(int);
+  void setCoeficiente(int , int);
+  //Inicializador de coeficinetes
+  void IniciadorCoeficiente();
   //Sobre carga de operadores
   FuncionPolinomica* operator+(FuncionPolinomica*);
   FuncionPolinomica* operator-(FuncionPolinomica*);
