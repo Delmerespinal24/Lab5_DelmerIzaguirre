@@ -1,5 +1,6 @@
 #include "FuncionPolinomica.h"
 
+
 FuncionPolinomica::FuncionPolinomica(){}
 
 FuncionPolinomica::FuncionPolinomica(int p)
@@ -121,7 +122,20 @@ FuncionPolinomica* FuncionPolinomica::operator-(FuncionPolinomica* funcion)
 
 FuncionPolinomica* FuncionPolinomica::operator*(FuncionPolinomica* funcion)
 {
-
+  vector <int> potencias;
+  int potencia = n+funcion->getN();
+  int sumaPotencias = 0;
+  FuncionPolinomica* f = new FuncionPolinomica(potencia);
+  int nuevoCoeficiente = 0;
+  for (int i = 0; i<=n; i++){
+    for (int j = 0; j <= funcion->getN(); j++){
+      nuevoCoeficiente = this->getCoeficiente(i)*funcion->getCoeficiente(j);
+      sumaPotencias = i+j;
+      f.addCoeficiente(nuevoCoeficiente);
+      potencias.push_back(sumaPotencias);
+    }
+  }
+  
 }
 
 FuncionPolinomica* FuncionPolinomica::operator/(FuncionPolinomica* funcion)
@@ -129,7 +143,7 @@ FuncionPolinomica* FuncionPolinomica::operator/(FuncionPolinomica* funcion)
 
 }
 
-void FuncionPolinomica::operator()()
+void FuncionPolinomica::operator++()
 {
   bool comparacion;
   int factor=0;

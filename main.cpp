@@ -113,6 +113,20 @@ int main()
         break;
       }
       case 6:{//factor comun de funciones
+        int indice;
+        cout<<"Funciones Polinomicas" << endl << endl;
+        for (int i = 0; i<funciones.size(); i++){
+          cout<< i <<" " << funciones[i];
+        }
+        cout<< endl << "Ingrese un indice para encontrar el factor comun: ";
+        cin>>indice;
+        while (indice<0 && indice>funciones.size()-1){
+          cout<<"Error en el indice" << endl;
+          cout<<"Ingrese un indice para encontrar el factor comun: ";
+          cin>>indice;
+        }
+        ++(*funciones[indice]);
+        cout<< endl;
         break;
       }
       case 7:{//Igualando dos funciones
@@ -176,8 +190,12 @@ int main()
     cout<<"Desea continuar [s/n]: ";
     cin>>respuesta;
   }
-  LimpiarVector(funciones);
-  LimpiarVector(operaciones);
+  if (funciones.size()>-1){
+    LimpiarVector(funciones);
+  }
+  if (operaciones.size()>-1){
+    LimpiarVector(operaciones);
+  }
   return 0;
 }
 

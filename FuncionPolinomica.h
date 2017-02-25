@@ -28,7 +28,7 @@ public:
   FuncionPolinomica* operator-(FuncionPolinomica*);
   FuncionPolinomica* operator*(FuncionPolinomica*);
   FuncionPolinomica* operator/(FuncionPolinomica*);
-  void operator()();
+  void operator++();
   void operator==(FuncionPolinomica*);
   void operator!=(FuncionPolinomica*);
 };
