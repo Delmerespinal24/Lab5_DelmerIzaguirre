@@ -16,6 +16,7 @@ int main()
   string respuesta = "s";
   int opcion=0;
   vector<FuncionPolinomica*> funciones;
+  vector<FuncionPolinomica*> operaciones;
   while (respuesta=="s"){
     cout<<"*MENU DE OPCIONES" << endl;
     cout<<"*1- Agregar funcion polinomica" << endl;
@@ -38,19 +39,26 @@ int main()
     switch (opcion){
       case 1:{//Agregando funciones
         int n;
-        cout<<"Ingrese un numero para el grado de la funcion: ";
+        cout<<"Ingrese un numero entre 2 y 5 para el grado de la funcion: ";
         cin>>n;
+        while (n<2 || n>5){
+          cout<<"Error en el grado" << endl,
+          cout<<"Ingrese un numero entre 2 y 5 para el grado de la funcion: ";
+          cin>>n;
+        }
         FuncionPolinomica* funcion = new FuncionPolinomica(n);
         funcion->addCoeficientes();
         funciones.push_back(funcion);
+        cout<< funcion << endl;
         cout<<"Se ha agregado una funcion" << endl;
         break;
       }
       case 2:{//Sumando funciones
         //Listando los indices de las funciones
+        cout<<"*Funciones Polinomicas " << endl << endl;
         int suma1=0, suma2=0;
         for (int i=0; i < funciones.size(); i++){
-          cout<<i << ",";
+          cout<<i << " " << funciones[i] << endl;
         }
         cout<<endl<<"*Ingrese un indice para la primer funcion: ";
         cin>>suma1;
@@ -68,13 +76,15 @@ int main()
           cin>>suma2;
         }
         FuncionPolinomica* f = *funciones[suma1] + funciones[suma2];
-        funciones.push_back(f);
+        cout<< f << endl;
+        operaciones.push_back(f);
         break;
       }
       case 3:{//Restar funciones
         int resta1=0, resta2 = 0;
+        cout<<"Funciones polinomicas" << endl << endl;
         for (int i=0; i < funciones.size(); i++){
-          cout<<i << ",";
+          cout<<i << " " << funciones[i]  << endl;
         }
         cout<<endl<<"*Ingrese un indice para la primer funcion: ";
         cin>>resta1;
@@ -91,8 +101,9 @@ int main()
           cout<<"Ingrese un indice para la segunda funcion: ";
           cin>>resta2;
         }
-        FuncionPolinomica* f = *funciones[resta1] + funciones[resta2];
-        funciones.push_back(f);
+        FuncionPolinomica* f = *funciones[resta1] - funciones[resta2];
+        cout<< f << endl;
+        operaciones.push_back(f);
         break;
       }
       case 4:{//Multiplicar funciones
@@ -105,12 +116,60 @@ int main()
         break;
       }
       case 7:{//Igualando dos funciones
+        cout<<"Funciones Polinomicas" << endl;
+        int igual1=0, igual2=0;
+        for (int i=0; i<funciones.size(); i++){
+          cout<< i << " " << funciones[i] << endl;
+        }
+        cout<< endl << "Ingrese un indice para la primera funcion: ";
+        cin>>igual1;
+        while (igual1<0 && igual1>funciones.size()-1){
+          cout<<"Error en el indice" << endl;
+          cout<<"Ingrese un indice para la primera funcion: ";
+          cin>>igual1;
+        }
+        cout<<"Ingrese otro indice para la segunda funcion: ";
+        cin>>igual2;
+        while (igual2<0 || igual2>funciones.size()-1){
+          cout<<"Error en el indice " << endl;
+          cout<<"Ingrese otro indice para la segunda funcion: ";
+          cin>>igual2;
+        }
+        *funciones[igual1]==funciones[igual2];
+        cout<< endl;
         break;
       }
       case 8:{//Desigualdar dos funciones
+        int desigual1=0, desigual2=0;
+        for (int i=0; i<funciones.size(); i++){
+          cout<< i << " "<< funciones[i] << endl;
+        }
+        cout<< endl << "Ingrese un indice para la primera funcion: ";
+        cin>>desigual1;
+        while (desigual1<0 && desigual1>funciones.size()-1){
+          cout<<"Error en el indice" << endl;
+          cout<<"Ingrese un indice para la primera funcion: ";
+          cin>>desigual1;
+        }
+        cout<<"Ingrese otro indice para la segunda funcion: ";
+        cin>>desigual2;
+        while (desigual2<0 || desigual2>funciones.size()-1){
+          cout<<"Error en el indice " << endl;
+          cout<<"Ingrese otro indice para la segunda funcion: ";
+          cin>>desigual2;
+        }
+        *funciones[desigual1]!=funciones[desigual2] ;
+        cout<< endl;
         break;
       }
       case 9: {//Impresion de funciones
+        cout<<"***********************"<< endl;
+        cout<<"*FUNCIONES POLINOMICAS*" << endl;
+        cout<<"***********************" << endl;
+        for (int i=0; i<funciones.size(); i++){
+          cout<< i << " " << funciones[i];
+        }
+        cout<< endl;
         break;
       }
     }
@@ -118,6 +177,7 @@ int main()
     cin>>respuesta;
   }
   LimpiarVector(funciones);
+  LimpiarVector(operaciones);
   return 0;
 }
 

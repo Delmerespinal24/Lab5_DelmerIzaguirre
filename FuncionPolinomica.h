@@ -2,12 +2,14 @@
 #define FUNCIONPOLINOMICA_H_
 
 #include <iostream>
+#include <ostream>
 #include <vector>
 
 using namespace std;
 
 class FuncionPolinomica
 {
+  friend ostream& operator<<(ostream& , FuncionPolinomica*);
 private:
   int n;
   vector<int> coeficientes;
@@ -26,9 +28,9 @@ public:
   FuncionPolinomica* operator-(FuncionPolinomica*);
   FuncionPolinomica* operator*(FuncionPolinomica*);
   FuncionPolinomica* operator/(FuncionPolinomica*);
-  FuncionPolinomica* operator()(FuncionPolinomica*);
+  void operator()();
   void operator==(FuncionPolinomica*);
   void operator!=(FuncionPolinomica*);
-  void operator<<(FuncionPolinomica*);
 };
+
 #endif
