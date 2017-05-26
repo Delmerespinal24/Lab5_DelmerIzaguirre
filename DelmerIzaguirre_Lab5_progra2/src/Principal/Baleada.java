@@ -5,12 +5,30 @@
  */
 package Principal;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Owner
  */
 public abstract class Baleada {
+
+    ArrayList<String> Ingredientes = new ArrayList<String>();
+
+    public Baleada() {
+       
+    }
     
+
+    public ArrayList<String> Ingredientes() {
+        Ingredientes.add("Tortillas");
+        return Ingredientes;
+    }
+   
     
-    
+    @Override
+    public abstract String toString();
+
+    public abstract ArrayList<String> getIngredientes();
+    public abstract int getPrecio();
 }
