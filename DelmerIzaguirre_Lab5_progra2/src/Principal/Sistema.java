@@ -27,20 +27,107 @@ public class Sistema extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        menu_cliente = new javax.swing.JDialog();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        t_nombre = new javax.swing.JTextField();
+        t_telefono = new javax.swing.JTextField();
+        t_efectivo = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         nueva_orden = new javax.swing.JMenuItem();
         nuevo_cliente = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        menu_cliente.setBackground(new java.awt.Color(153, 204, 255));
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setText("Nombre");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setText("Numero de telefono");
+
+        jLabel3.setText("Efectivo");
+
+        jLabel4.setText("Direccion");
+
+        t_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                t_nombreKeyTyped(evt);
+            }
+        });
+
+        t_telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                t_telefonoKeyTyped(evt);
+            }
+        });
+
+        t_efectivo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                t_efectivoKeyTyped(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel5.setText("Agregar un cliente");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        javax.swing.GroupLayout menu_clienteLayout = new javax.swing.GroupLayout(menu_cliente.getContentPane());
+        menu_cliente.getContentPane().setLayout(menu_clienteLayout);
+        menu_clienteLayout.setHorizontalGroup(
+            menu_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menu_clienteLayout.createSequentialGroup()
+                .addGroup(menu_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menu_clienteLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(menu_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
+                        .addGap(51, 51, 51)
+                        .addGroup(menu_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(t_nombre)
+                            .addComponent(t_telefono)
+                            .addComponent(t_efectivo)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(menu_clienteLayout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(jLabel5)))
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+        menu_clienteLayout.setVerticalGroup(
+            menu_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menu_clienteLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel5)
+                .addGap(44, 44, 44)
+                .addGroup(menu_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(t_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(menu_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(t_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(menu_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(t_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(menu_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +143,16 @@ public class Sistema extends javax.swing.JFrame {
         jMenu3.add(nueva_orden);
 
         nuevo_cliente.setText("Nuevo Cliente");
+        nuevo_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevo_clienteActionPerformed(evt);
+            }
+        });
+        nuevo_cliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nuevo_clienteKeyPressed(evt);
+            }
+        });
         jMenu3.add(nuevo_cliente);
 
         jMenuBar2.add(jMenu3);
@@ -83,6 +180,44 @@ public class Sistema extends javax.swing.JFrame {
     private void nueva_ordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nueva_ordenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nueva_ordenActionPerformed
+
+    private void t_nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_t_nombreKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c > ' ' || c < ' ')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_t_nombreKeyTyped
+
+    private void t_telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_t_telefonoKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if ((c < '0' || c > '9')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_t_telefonoKeyTyped
+
+    private void t_efectivoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_t_efectivoKeyTyped
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if ((c < '0' || c > '9')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_t_efectivoKeyTyped
+
+    private void nuevo_clienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nuevo_clienteKeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_nuevo_clienteKeyPressed
+
+    private void nuevo_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevo_clienteActionPerformed
+        // TODO add your handling code here:
+        menu_cliente.setModal(true);
+        menu_cliente.pack();
+        menu_cliente.setLocationRelativeTo(this);
+        menu_cliente.setVisible(true);
+    }//GEN-LAST:event_nuevo_clienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,13 +255,21 @@ public class Sistema extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JDialog menu_cliente;
     private javax.swing.JMenuItem nueva_orden;
     private javax.swing.JMenuItem nuevo_cliente;
+    private javax.swing.JTextField t_efectivo;
+    private javax.swing.JTextField t_nombre;
+    private javax.swing.JTextField t_telefono;
     // End of variables declaration//GEN-END:variables
 }
