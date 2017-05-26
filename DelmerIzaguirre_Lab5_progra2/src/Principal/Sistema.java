@@ -395,7 +395,7 @@ public class Sistema extends javax.swing.JFrame {
             ta_direccion.setText("");
 
             menu_cliente.dispose();
-            menu_cliente.dispose();
+            
         }
     }//GEN-LAST:event_agregarActionPerformed
 
@@ -454,7 +454,7 @@ public class Sistema extends javax.swing.JFrame {
             nodo_cliente.add(dato1);
             raiz.add(nodo_cliente);
             m.reload();
-
+            menu_ordenes.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
