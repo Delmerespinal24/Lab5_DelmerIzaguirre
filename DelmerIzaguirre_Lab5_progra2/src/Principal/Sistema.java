@@ -54,7 +54,7 @@ public class Sistema extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         cb_baleada = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        jt_empresa = new javax.swing.JTree();
         jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -233,8 +233,8 @@ public class Sistema extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Clientes");
-        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane3.setViewportView(jTree1);
+        jt_empresa.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane3.setViewportView(jt_empresa);
 
         jButton2.setText("Terminada");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -395,6 +395,7 @@ public class Sistema extends javax.swing.JFrame {
             ta_direccion.setText("");
 
             menu_cliente.dispose();
+            dispose();
         }
     }//GEN-LAST:event_agregarActionPerformed
 
@@ -416,27 +417,59 @@ public class Sistema extends javax.swing.JFrame {
             }
 
             orden += 7;
-                
-            ///Agreggar al jtree
             
-            DefaultTreeModel modeloArbol
-                    = (DefaultTreeModel) jl_clientes.getModel();
-            DefaultMutableTreeNode raiz
-                    = (DefaultMutableTreeNode) modeloArbol.getRoot();
-            DefaultMutableTreeNode nodo_orden
-                    = new DefaultMutableTreeNode(
-                            new Orden(persona,
+            Orden baleadas = new Orden(persona,
                                     baleada,
                                     orden,
                                     new Date()
-                            )
+                            );
+            
+            ///Agreggar al jtree
+            DefaultTreeModel m = (DefaultTreeModel) jt_empresa.getModel();
+            DefaultMutableTreeNode raiz
+                    = (DefaultMutableTreeNode) m.getRoot();
+            DefaultMutableTreeNode nodo_orden
+                    = new DefaultMutableTreeNode(
+                           baleadas
                     );
+            System.out.println("hola");
+            DefaultMutableTreeNode nodo_cliente 
+                    = new DefaultMutableTreeNode(((Cliente) modeloLista.get(jl_clientes.getSelectedIndex())).getNombre());
+            
+            DefaultMutableTreeNode dato1 = new DefaultMutableTreeNode("Direccion");
+            DefaultMutableTreeNode dato2 = new DefaultMutableTreeNode("Numero de telefono");
+            DefaultMutableTreeNode dato3 = new DefaultMutableTreeNode("Efectivo");
+            
+            DefaultMutableTreeNode telefono = new DefaultMutableTreeNode(((Cliente) modeloLista.get(jl_clientes.getSelectedIndex())).getTelefono());
+            DefaultMutableTreeNode direccion = new DefaultMutableTreeNode(((Cliente) modeloLista.get(jl_clientes.getSelectedIndex())).getDireccion());
+            DefaultMutableTreeNode efectivo = new DefaultMutableTreeNode(((Cliente) modeloLista.get(jl_clientes.getSelectedIndex())).getEfectivo());
+            
+            nodo_orden.add(baleada.getIngredientes());
+            nodo_cliente.add(nodo_orden);
+            dato1.add(direccion);
+            dato2.add(telefono);
+            dato3.add(efectivo);
+            nodo_cliente.add(dato3);
+            nodo_cliente.add(dato2);
+            nodo_cliente.add(dato1);
+            raiz.add(nodo_cliente);
+            m.reload();
 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        DefaultTreeModel m
+                = (DefaultTreeModel) jt_empresa.getModel();
+        Object v1 = jt_empresa.getSelectionPath().getLastPathComponent();
+            nodo_seleccionado = (DefaultMutableTreeNode) v1;
+        
+        m.removeNodeFromParent(
+                nodo_seleccionado
+        );
+        m.reload();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -496,8 +529,8 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTree jTree1;
     private javax.swing.JList<String> jl_clientes;
+    private javax.swing.JTree jt_empresa;
     private javax.swing.JDialog menu_cliente;
     private javax.swing.JDialog menu_ordenes;
     private javax.swing.JMenuItem nueva_orden;
@@ -510,5 +543,5 @@ public class Sistema extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     int orden = 7;
-
+    DefaultMutableTreeNode nodo_seleccionado;
 }

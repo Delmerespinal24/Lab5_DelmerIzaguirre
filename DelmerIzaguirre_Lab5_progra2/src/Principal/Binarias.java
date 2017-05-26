@@ -6,24 +6,27 @@
 package Principal;
 
 import java.util.ArrayList;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  *
  * @author Owner
  */
 public class Binarias extends Baleada{
-    private ArrayList<String> ingredientes;
+    private DefaultMutableTreeNode ingredientes;
     private int precio = 22;
     
     public Binarias() {
         super();
         ingredientes = super.Ingredientes();
-        ingredientes.add("Mantequilla");
-        ingredientes.add("Frifoles");
+        DefaultMutableTreeNode M = new DefaultMutableTreeNode("Mantequilla");
+        DefaultMutableTreeNode F = new DefaultMutableTreeNode("Frijoles");
+        ingredientes.add(M);
+        ingredientes.add(F);
         
     }
 
-    public ArrayList<String> getIngredientes() {
+    public DefaultMutableTreeNode getIngredientes() {
         return ingredientes;
     }
     
@@ -31,7 +34,6 @@ public class Binarias extends Baleada{
     public int getPrecio() {
         return precio;
     }
-    
     
     @Override
     public String toString() {

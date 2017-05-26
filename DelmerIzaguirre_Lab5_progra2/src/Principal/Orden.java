@@ -58,7 +58,7 @@ public class Orden {
 
     @Override
     public String toString() {
-        return cliente.getNombre();
+        return baleada.toString();
     }
     
     

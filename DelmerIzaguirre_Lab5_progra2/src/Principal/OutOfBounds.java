@@ -6,6 +6,7 @@
 package Principal;
 
 import java.util.ArrayList;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  *
@@ -13,27 +14,32 @@ import java.util.ArrayList;
  */
 public class OutOfBounds extends Baleada{
     
-    private ArrayList<String> ingredientes;
+    private DefaultMutableTreeNode ingredientes;
     private int precio = 85;
     
     public OutOfBounds() {
         super();
         ingredientes = super.Ingredientes();
-        ingredientes.add("Mantequilla");
-        ingredientes.add("Frifoles");
-        ingredientes.add("Huevo");
-        ingredientes.add("Platano");
-        ingredientes.add("Chorizo");
+        DefaultMutableTreeNode M = new DefaultMutableTreeNode("Mantequilla");
+        DefaultMutableTreeNode F = new DefaultMutableTreeNode("Frijoles");
+        DefaultMutableTreeNode H = new DefaultMutableTreeNode("Huevo");
+        DefaultMutableTreeNode P = new DefaultMutableTreeNode("Platano");
+        DefaultMutableTreeNode C = new DefaultMutableTreeNode("Chorizo");
+        ingredientes.add(M);
+        ingredientes.add(F);
+        ingredientes.add(H);
+        ingredientes.add(P);
+        ingredientes.add(C);
+    
+        
+ 
         
     }
 
-    public ArrayList<String> getIngredientes() {
+    public DefaultMutableTreeNode getIngredientes() {
         return ingredientes;
     }
 
-    public void setIngredientes(ArrayList<String> ingredientes) {
-        this.ingredientes = ingredientes;
-    }
 
     public int getPrecio() {
         return precio;

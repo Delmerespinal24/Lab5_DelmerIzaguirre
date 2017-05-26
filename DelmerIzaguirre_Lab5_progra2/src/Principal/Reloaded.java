@@ -6,6 +6,7 @@
 package Principal;
 
 import java.util.ArrayList;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  *
@@ -14,22 +15,26 @@ import java.util.ArrayList;
 public class Reloaded extends Baleada{
     
     private int precio = 55;
-    private ArrayList<String> ingredientes;
+    private DefaultMutableTreeNode ingredientes;
     
     public Reloaded() {
         super();
         ingredientes = super.Ingredientes();
-        ingredientes.add("Mantequilla");
-        ingredientes.add("Frifoles");
-        ingredientes.add("Huevo");
-        ingredientes.add("Platano");
+        DefaultMutableTreeNode M = new DefaultMutableTreeNode("Mantequilla");
+        DefaultMutableTreeNode F = new DefaultMutableTreeNode("Frijoles");
+        DefaultMutableTreeNode H = new DefaultMutableTreeNode("Huevo");
+        DefaultMutableTreeNode P = new DefaultMutableTreeNode("Platano");
+        ingredientes.add(M);
+        ingredientes.add(F);
+        ingredientes.add(H);
+        ingredientes.add(P);
     }
 
     public int getPrecio() {
         return precio;
     }
 
-    public ArrayList<String> getIngredientes() {
+    public DefaultMutableTreeNode getIngredientes() {
         return ingredientes;
     }
     
