@@ -395,7 +395,7 @@ public class Sistema extends javax.swing.JFrame {
             ta_direccion.setText("");
 
             menu_cliente.dispose();
-            dispose();
+            menu_cliente.dispose();
         }
     }//GEN-LAST:event_agregarActionPerformed
 
